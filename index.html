@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>ChatBox</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Simple ChatBox</h1>
+    </div>
+
+    <div class="message-area">
+        <!--   <div class="my-message">
+            This is a long text : Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sint? Fugiat est rerum nulla dolores repudiandae, dolore perspiciatis velit ipsam voluptas? Distinctio sed ipsum dicta tenetur saepe quidem ab voluptatum earum
+            molestiae quas non, enim, nulla architecto quisquam eveniet libero optio velit natus. Veritatis error hic magni tenetur in!
+        </div>
+        <div class="separator"></div>
+
+
+        <div class="others-message">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis impedit nesciunt quidem, minima dolorum adipisci odio dolorem, nam voluptatem laborum ratione dolor porro ea illum!
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="my-message">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt incidunt repellat enim tempora natus minima velit facere dignissimos beatae ducimus voluptates ab recusandae quae iste ipsam hic labore adipisci earum, delectus neque, libero nulla sapiente
+            fugit amet? Corrupti illum, in, quis inventore porro obcaecati dolorum aliquid nobis rerum laudantium cupiditate quod, adipisci dolorem necessitatibus neque facere amet quisquam quaerat. Molestias.
+        </div>
+
+        <div class="separator"></div>
+
+
+        <div class="others-message">
+            Lorem ipsum dolor sit amet.
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="my-message">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero aspernatur, ea voluptas, culpa minima provident vel magnam assumenda quae, mollitia nemo. Neque a eveniet non provident aperiam architecto eum ex veniam nisi ratione temporibus cum dolorem
+            vero quam facilis repellat quo ut placeat hic corrupti, libero itaque. Unde ad odit voluptate nesciunt quam sapiente maiores tempore? Asperiores qui ex consequatur ullam voluptatibus unde natus pariatur voluptas labore itaque autem temporibus
+            adipisci iusto, dolorum laborum dolores ipsam, mollitia delectus saepe quasi!
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="others-message">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum debitis nulla earum, nesciunt facere nemo accusantium iusto molestias doloremque quo magni deleniti aut unde assumenda!
+        </div> -->
+    </div>
+
+    <div class="typing-area">
+        <textarea class="typing-box" id="typing-box">Your message...</textarea>
+        <button class="send-button" onclick="SendMessage()">Send</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+
+        //Let's work on the Send message button function : 
+        function SendMessage() {
+            const message = document.getElementById('typing-box').value;
+            const html = '<div class="my-message">' + message + '</div>' + '<div class="separator"></div>';
+            document.querySelector('.message-area').innerHTML += html;
+            message.value = "";
+
+            //Let's send an event to the server to let know the user message and share it for other users : 
+            socket.emit('send-message', message);
+        }
+
+
+        //Let's register a client event : 
+        socket.on('receive-message', (msg) => {
+            const html = '<div class="others-message">' + msg + '</div>' + '<div class="separator"></div>';
+            document.querySelector('.message-area').innerHTML += html;
+        })
+    </script>
+</body>
+
+</html>
