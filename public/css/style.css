@@ -10,39 +10,44 @@
 .main-container {
     position: relative;
     width: 600px;
-    height: 800px;
+    height: 600px;
     margin: 0 auto;
 }
 
 .header {
-    width: 70%;
-    height: 80px;
+    width: 60%;
+    height: 60px;
     background: rgb(37, 37, 37);
     margin: 0 auto;
     color: white;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     border-radius: 10px 10px 0 0;
 }
 
 .message-area {
-    width: 70%;
-    height: 600px;
+    width: 60%;
+    height: 400px;
     background: rgb(243, 242, 242);
     margin: 0 auto;
     overflow: auto;
+    overflow-wrap: break-word;
+}
+
+.others-message,
+.my-message {
+    max-width: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+    color: white;
 }
 
 .others-message {
-    margin-left: 10px;
-    margin-top: 15px;
     float: left;
     background: rgb(56, 56, 56);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 350px;
-    overflow-wrap: break-word;
+    margin-left: 10px;
 }
 
 .separator {
@@ -52,21 +57,14 @@
 }
 
 .my-message {
-    margin-right: 10px;
-    margin-top: 5px;
     float: right;
-    font-weight: bold;
     background: rgb(7, 132, 235);
-    color: white;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 350px;
-    overflow-wrap: break-word;
+    margin-right: 10px;
 }
 
 .typing-area {
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
     height: auto;
     background: rgb(243, 242, 242);
     border-radius: 0px 0px 10px 10px;
@@ -76,7 +74,7 @@
 textarea {
     border-radius: 10px;
     background: rgb(56, 56, 56);
-    width: 300px;
+    width: 250px;
     resize: none;
     white-space: normal;
     color: white;
